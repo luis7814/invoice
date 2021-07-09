@@ -1,0 +1,65 @@
+@font-face{
+	font-family : "gameboi95";
+	src: url("/fuentes/Gameboi95.ttf");
+}
+
+body
+{
+    background-color: black; /* La página de fondo será negra */
+    color: white; /*El texto de la página será blanco */
+    font-family: Tahoma,Verdana,Segoe,sans-serif; 
+    /*font-family: gameboi95;*/
+}
+
+body .ui-widget:not(.pi), body .ui-widget .ui-widget:not(.pi) {
+	font-family: Tahoma,Verdana,Segoe,sans-serif;
+}
+
+.clean-button.ui-button {
+	background-color: #007AD9;
+    color: white;
+    border: none;
+}
+
+.update-button.ui-button {
+	background-color: #007AD9;
+    color: white;
+    border: none;
+}
+
+.delete-button.ui-button {
+	background-color: #007AD9;
+    color: white;
+    border: none;
+}
+
+.save-button.ui-button {
+	background-color: #007AD9;
+    color: white;
+    border: none;
+}
+
+.ui-panelgrid .ui-panelgrid-cell {
+	background-color: transparent;
+	border: black;
+		
+}
+
+.ui-panelgrid .ui-panelgrid-content {
+	background-color: transparent;
+	border: black;
+		
+}
+
+.label.ui-outputlabel {
+	font-weight: bold;
+}
+
+.description.ui-outputlabel {
+	font-style: italic;
+	font-size: 1px;
+}
+
+.menu.ui-menuitem-text {
+	font-size: large;	
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Gestión de Productos</title>
+</h:head>
+
+<h:body>
+	<link rel="stylesheet" type="text/css" href="../../css/generic.css?1.9" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../../css/primeflex.css?1.0" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../../css/panel.css?1.0" media="screen" />	
+	
+	<link rel="stylesheet" type="text/css" href="../../../css/generic.css?1.9" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../../../css/primeflex.css?1.0" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../../../css/panel.css?1.0" media="screen" />
+	
+	<style type="text/css">
+    	.ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {
+        text-align: center;
+    	}
+ 
+    	.customPanelGrid .ui-panelgrid-content {
+        align-items: center;
+    	}
+    	
+    	.pi-shopping-cart .pi-money-bill  {
+    		color: yellow;
+    	}
+    	
+    	
+	</style>
+	
+	<h:form>
+		<div class="ui-g">
+			<div class="ui-g-12">
+				<h:panelGrid columns="3" style="width: 100%;">
+					<div align="center"><p></p></div>
+			    	<h:panelGrid columns="1" style="width:100%; text-align: right;">
+			    		<h1>Bienvenido #{name}</h1>
+			    	</h:panelGrid>
+			    </h:panelGrid>
+				
+				<p:menubar>
+					<p:menuitem value="REGISTRAR PEDIDO" url="/invoice/registerOrder"/>
+					<p:menuitem value="CONSULTAR PEDIDO" url="/invoice/checkOrder"/>
+					<p:menuitem value="MESAS" url="/invoice/tables"/>
+					<p:menuitem value="TIPO PRODUCTO" url="/invoice/productType"/>
+					<p:menuitem value="PRODUCTO" url="/invoice/product"/>
+				</p:menubar>
+			</div>
+		</div>
+	</h:form>
+
+</h:body>
+</html>
