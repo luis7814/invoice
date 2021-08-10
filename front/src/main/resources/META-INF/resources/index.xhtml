@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Gestión de Perfiles</title>
-	
+	<title>Pedidos</title>
+	<h:outputStylesheet name="css/primeflex.css" />
 </h:head>
 
-<h:body style="height: 100%">
-
-	<link rel="stylesheet" type="text/css" href="../../css/generic.css?1.0" media="screen" />
-	<link rel="stylesheet" type="text/css" href="../../css/primeflex.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="../../css/panel.css" media="screen" />
+<h:body>
 	
-	<script type="text/javascript">
 		
-	</script>
-		
-	
 	<style type="text/css">
+	    .ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {
+	        text-align: center;
+	    }
+	
+	    .customPanelGrid .ui-panelgrid-content {
+	        align-items: center;
+	    }
 	</style>
 	
 	<h:form>
-	</h:form>
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		<div align="center">
+				
+		<p:panelGrid columns="1" layout="flex" styleClass="showcase-text-align-center" style="width: 100%;">
+	        <p:inputText id="user"  placeholder="Usuario" value="#{loginNamed.login}" style="width: 50%"/>
+	        <p:password id="password" placeholder="Password" value="#{loginNamed.password}" style="width: 50%"/>
+	        <p:commandButton value="Ingresar" action="#{loginNamed.register}" update="@form" />
+	    </p:panelGrid>
+				
+		</div>
+		    </h:form>
 </h:body>
 </html>
 

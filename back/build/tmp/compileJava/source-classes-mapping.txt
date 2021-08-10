@@ -28,18 +28,18 @@ co/com/labsphanter/invoice/service/ProductService.java
  co.com.labsphanter.invoice.service.ProductService
 co/com/labsphanter/invoice/controller/ProductController.java
  co.com.labsphanter.invoice.controller.ProductController
-co/com/labsphanter/invoice/controller/InvoiceController.java
- co.com.labsphanter.invoice.controller.InvoiceController
 co/com/labsphanter/invoice/controller/TableController.java
  co.com.labsphanter.invoice.controller.TableController
-co/com/labsphanter/invoice/service/InvoiceService.java
- co.com.labsphanter.invoice.service.InvoiceService
-co/com/labsphanter/invoice/object/model/Invoice.java
- co.com.labsphanter.invoice.object.model.Invoice
- co.com.labsphanter.invoice.object.model.Invoice$InvoiceDetail
+co/com/labsphanter/invoice/repository/ProductTypeRepository.java
+ co.com.labsphanter.invoice.repository.ProductTypeRepository
 co/com/labsphanter/invoice/service/ProductTypeService.java
  co.com.labsphanter.invoice.service.ProductTypeService
 co/com/labsphanter/invoice/controller/ProductTypeController.java
  co.com.labsphanter.invoice.controller.ProductTypeController
-co/com/labsphanter/invoice/repository/ProductTypeRepository.java
- co.com.labsphanter.invoice.repository.ProductTypeRepository
+co/com/labsphanter/invoice/controller/InvoiceController.java
+ co.com.labsphanter.invoice.controller.InvoiceController
+co/com/labsphanter/invoice/object/model/Invoice.java
+ co.com.labsphanter.invoice.object.model.Invoice
+ co.com.labsphanter.invoice.object.model.Invoice$InvoiceDetail
+co/com/labsphanter/invoice/service/InvoiceService.java
+ co.com.labsphanter.invoice.service.InvoiceService

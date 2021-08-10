@@ -1,10 +1,10 @@
 plugins {
-	id 'org.springframework.boot' version '2.5.0'
+	id 'org.springframework.boot' version '2.3.0.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
 
-group = 'co.com.labsphanter.invoice'
+group = 'co.com.labsphanter'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -20,24 +20,33 @@ repositories {
 
 dependencies {
 	
-	implementation 'org.joinfaces:primefaces-spring-boot-starter:4.5.0'
-	implementation 'org.springframework.boot:spring-boot-starter-mail:2.5.0'
+	implementation 'org.joinfaces:primefaces-spring-boot-starter:4.4.3'
 	
 	implementation 'org.primefaces:primefaces:10.0.0-RC1'
-	implementation 'org.joinfaces:joinfaces-dependencies:4.5.0'
-	implementation 'org.joinfaces:rewrite-spring-boot-starter:4.5.0'
-	implementation 'com.ocpsoft:prettyfaces-jsf2:3.3.3'
-	
-	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	
 	implementation 'javax.enterprise:cdi-api:2.0.SP1'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'org.apache.commons:commons-lang3:3.11'
-	implementation 'commons-io:commons-io:2.6'
+	
+	implementation group: 'org.joinfaces', name: 'joinfaces-dependencies', version: '4.4.3', ext: 'pom'
+	compile group: 'org.joinfaces', name: 'rewrite-spring-boot-starter', version: '4.4.3'
+	compile group: 'com.ocpsoft', name: 'prettyfaces-jsf2', version: '3.3.3'
+	
+	compile group: 'commons-io', name: 'commons-io', version: '2.6'
+	
+	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+	implementation 'org.apache.httpcomponents:httpcore:4.5.13'
+	
+	
+	implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.7'
+	
 	
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 	
 }
 

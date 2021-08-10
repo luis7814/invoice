@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Pedidos</title>
+	<h:outputStylesheet name="../css/primeflex.css" />
+</h:head>
+
+<h:body>
+	
+		
+	<style type="text/css">
+	    .ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {
+	        text-align: center;
+	    }
+	
+	    .customPanelGrid .ui-panelgrid-content {
+	        align-items: center;
+	    }
+	</style>
+	
+	<h:form>
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		<p:menubar>
+            <p:submenu label="Usuarios" icon="pi pi-fw pi-file">
+                <p:menuitem value="Crear usuario" icon="pi pi-fw pi-trash"/>
+                <p:menuitem value="Editar usuario" icon="pi pi-fw pi-external-link"/>
+            </p:submenu>
+
+            <p:submenu label="Tipo de productos" icon="pi pi-fw pi-pencil">
+                <p:menuitem value="Crear Tipo de producto" icon="pi pi-fw pi-align-left"/>
+                <p:menuitem value="Editar Tipo de producto" icon="pi pi-fw pi-align-right"/>
+            </p:submenu>
+            
+            <p:submenu label="Productos" icon="pi pi-fw pi-pencil">
+                <p:menuitem value="Crear producto" icon="pi pi-fw pi-align-left"/>
+                <p:menuitem value="Editar producto" icon="pi pi-fw pi-align-right"/>
+            </p:submenu>
+            
+            <p:submenu label="Mesas" icon="pi pi-fw pi-pencil">
+                <p:menuitem value="Crear mesa" icon="pi pi-fw pi-align-left"/>
+                <p:menuitem value="Editar mesa" icon="pi pi-fw pi-align-right"/>
+            </p:submenu>
+
+			<p:submenu label="Ventas" icon="pi pi-fw pi-pencil">
+                <p:menuitem value="Crear venta" icon="pi pi-fw pi-align-left" url="/invoice/invoice/create"/>
+                <p:menuitem value="Editar venta" icon="pi pi-fw pi-align-right"/>
+                <p:menuitem value="Buscar venta" icon="pi pi-fw pi-align-right"/>
+                <p:menuitem value="Listar ventas activas" icon="pi pi-fw pi-align-right" url="/invoice/invoice/active"/>
+            </p:submenu>
+
+            <f:facet name="options">
+                <p:button value="Logout" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+            </f:facet>
+        </p:menubar>	
+	</h:form>
+</h:body>
+</html>
+

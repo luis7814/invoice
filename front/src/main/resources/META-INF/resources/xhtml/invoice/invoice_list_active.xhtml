@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Pedidos</title>
+	<h:outputStylesheet name="css/primeflex.css" />
+</h:head>
+
+<h:body>
+	
+	<ui:include src="../template.xhtml">
+		<ui:param name="name" value="#{menuNamed.name}"></ui:param>
+	</ui:include>
+	
+	<h:form id="form">
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		<div align="center">
+			<p:commandButton value="Actualizar" action="#{invoiceNamed.listAll}" update="@form"/>
+			<p:panelGrid columns="1" layout="flex" styleClass="showcase-text-align-center" style="width: 100%;">
+				<p:dataTable var="invoice" value="#{invoiceNamed.invoices}" style="width: 50%">
+					<p:column style="width:2rem">
+		                <p:rowToggler/>
+		            </p:column>
+					<p:column headerText="Fecha"> 
+						<h:outputText value="#{invoice.date}" />
+					</p:column>
+					<p:column headerText="Mesa"> 
+						<h:outputText value="#{invoice.table}" />
+					</p:column>
+					<p:column headerText="Estado"> 
+						<h:outputText value="#{invoice.state}" />
+					</p:column>
+					<p:column>
+						<p:commandButton value="Preparar" action="#{invoiceNamed.updateState(invoice.id, 'En preparación')}" update="@form" />
+						<p:commandButton value="Entregar" action="#{invoiceNamed.updateState(invoice.id, 'En camino')}" update="@form" />
+					</p:column>
+					<p:rowExpansion>
+						<p:dataTable var="invoiceDetails" value="#{invoiceNamed.invoiceId(invoice.id)}">
+							<p:column headerText="Cantidad"> 
+								<h:outputText value="#{invoiceDetails.amount}" />
+							</p:column>
+							<p:column headerText="Producto"> 
+								<h:outputText value="#{invoiceDetails.product}" />
+							</p:column>
+							<p:column headerText="Comentario"> 
+								<h:outputText value="#{invoiceDetails.description}" />
+							</p:column>
+						</p:dataTable>
+					</p:rowExpansion>
+				</p:dataTable>
+			</p:panelGrid>
+		</div>
+	</h:form>
+</h:body>
+</html>

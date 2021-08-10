@@ -6,46 +6,22 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-
-
 <h:head>
-	<title>Restaurante</title>
+	<title>Pedidos</title>
+	<h:outputStylesheet name="../css/primeflex.css" />
 </h:head>
 
 <h:body>
 	
-	<!-- <link rel="stylesheet" type="text/css" href="../../css/grid.css" media="screen"/>--> 
-	<ui:include src="templates/template.xhtml">
-		<ui:param name="name" value="#{menuNamed.templateName}"></ui:param>
+		
+	<ui:include src="template.xhtml">
+		<ui:param name="name" value="#{menuNamed.name}"></ui:param>
 	</ui:include>
 	
 	<h:form>
-		
-		<div class="ui-g">
-	    	<div class="ui-g-12 ui-md-3">
-	    		<p:panelMenu model="#{menuNamed.menuModel}">
-				</p:panelMenu>
-			</div>
-		    <div class="ui-g-12 ui-md-8 ui-g-nopad">
-		        <div class="ui-g-12">
-		           	<div align="center">
-			           	
-					</div>
-		        </div>
-			    <div class="ui-g-12 ui-g-nopad">
-			    	<div class="ui-g">
-				    </div>
-			    </div>
-		    </div>
-		    <div class="ui-g-12">
-		        <ui:include src="templates/footer.xhtml">
-					<ui:param name="name" value="#{menuNamed.templateName}"></ui:param>
-				</ui:include>
-		    </div>
-		</div>
-		
-		
-		
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		<p:inputText value="#{menuNamed.name}"/>
 	</h:form>
 </h:body>
 </html>
+

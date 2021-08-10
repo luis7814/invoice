@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Pedidos</title>
+	<h:outputStylesheet name="css/primeflex.css" />
+</h:head>
+
+<h:body>
+	
+	<ui:include src="../template.xhtml">
+		<ui:param name="name" value="#{menuNamed.name}"></ui:param>
+	</ui:include>
+	
+	<h:form id="form">
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		<div align="center">
+			<p:panelGrid columns="1" layout="flex" styleClass="showcase-text-align-center" style="width: 100%;">
+				
+				<p:selectOneMenu id="tables" value="#{invoiceNamed.tableNumber}" style="width: 50%">
+	            	<f:selectItems value="#{invoiceNamed.tables}"/>
+	            </p:selectOneMenu>
+	            
+	            <p:selectOneMenu id="productType" value="#{invoiceNamed.productType}" style="width: 50%">
+	            	<p:ajax listener="#{invoiceNamed.listProductForType()}" update="@form" />
+	            	<f:selectItems value="#{invoiceNamed.productsType}"/>
+	            </p:selectOneMenu>
+	            
+	            <p:selectOneMenu id="products" value="#{invoiceNamed.product}" style="width: 50%">
+	            	<f:selectItems value="#{invoiceNamed.products}"/>
+	            </p:selectOneMenu>
+				
+				<p:inputNumber id="amount" value="#{invoiceNamed.amount}" decimalPlaces="0" style="width: 50%"/>
+				
+				<p:inputTextarea id="description" rows="5" cols="40" placeholder="Descripción" value="#{invoiceNamed.description}" style="width: 50%"/>
+				
+				<p:commandButton value="Agregar al menú" action="#{invoiceNamed.subTotal}" update="@form" style="width: 50%"/>
+				
+				<p:dataTable var="detail" value="#{invoiceNamed.invoiceDetails}" style="width: 50%">
+					<p:column headerText="Producto"> 
+						<h:outputText value="#{detail.product}" />
+					</p:column>
+					<p:column headerText="Precio"> 
+						<h:outputText value="#{detail.price}" />
+					</p:column>
+					<p:column headerText="Cantidad"> 
+						<h:outputText value="#{detail.amount}" />
+					</p:column>
+					<p:column headerText="Total">
+						<h:outputText value="#{detail.total}" />
+					</p:column>
+					<p:column>
+						<p:commandButton value="Eliminar" action="#{invoiceNamed.deleteList(detail.product)}" update="@form" />
+					</p:column>
+				</p:dataTable>
+				
+				
+				<p:commandButton value="Confirmar menú" action="#{invoiceNamed.registerInvoice}" update="@form" style="width: 50%"/>
+				
+		        
+		        
+		    </p:panelGrid>
+				
+		</div>
+	</h:form>
+</h:body>
+</html>

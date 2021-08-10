@@ -1,64 +1,58 @@
 package co.com.labsphanter.invoice.named;
 
-import java.io.Serializable;
-
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import org.primefaces.model.menu.DefaultMenuModel;
-import org.primefaces.model.menu.DefaultSubMenu;
-import org.primefaces.model.menu.MenuModel;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import co.com.labsphanter.invoice.consumer.gateway.ConsumerGateway;
-import co.com.labsphanter.invoice.dto.Invoice;
-import co.com.labsphanter.invoice.dto.Product;
+import co.com.labsphanter.invoice.model.Person;
+import co.com.labsphanter.invoice.utils.Constants;
 import lombok.Data;
 
 @Data
 @Named
 @ViewScoped
-public class MenuNamed implements Serializable {
+public class MenuNamed {
 	
-	private static final long serialVersionUID = 1L;
+	private static ExternalContext externalContext;
 	
-	@Autowired
-	private ConsumerGateway<Invoice> invoiceConsumer;
+	private Person person;
 	
-	@Autowired
-	private ConsumerGateway<Product> productConsumer;
+	private String name;
 	
-	private String templateName;
-	
-	private MenuModel menuModel;
-	private MenuModel menuBar;
-	
-	
-	public MenuModel menuInformacion(String id) {
+	public MenuNamed() {
 		
+		externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		
+		person = (Person) externalContext.getSessionMap().get("person");
+		
+		if (person == null) {
+			permits();
+		} else {
+			name = person.getName();
+		}
+	}
+	
+	public static void permits() {
 		try {
+			Boolean flag = FacesContext.getCurrentInstance().getExternalContext().isResponseCommitted();
 			
-			menuModel = new DefaultMenuModel();
-			
-			DefaultSubMenu facturasSubMenu = DefaultSubMenu.builder().label("Facturas").build();
-			menuFacturas(id, facturasSubMenu);
-			
-		}catch (Exception e) {
+			if (!flag) {
+				FacesContext.getCurrentInstance().getExternalContext().redirect(Constants.INDEX);
+			}else {
+				logout();
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		return menuModel;
-		
 	}
 	
-	
-	private DefaultSubMenu menuFacturas(String id, DefaultSubMenu defaultSubMenu) {
-		return null;
+	public String createInvoice() {
+		return "/invoice/invoice/create?faces-redirect=true";
 	}
 	
-	
-	
-	
-	
-
+	private static String logout() {
+		externalContext.invalidateSession();
+		return "/index?faces-redirect=true";
+	}
 }

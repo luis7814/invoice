@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Document(collection = "invoice")
@@ -18,6 +19,7 @@ public class Invoice implements Serializable {
     private String total;
     private String state;
     private String person;
+    private List<InvoiceDetail> invoiceDetails;
 
     @Transient
     private String message;
